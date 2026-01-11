@@ -36,6 +36,11 @@ const Home: React.FC = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    document.title =
+      "PD. SAUDARA - Distributor Besi & Baja Berkualitas | Toko Besi Cimahi Bandung";
+  }, []);
+
   const scrollToSection = (sectionId: string): void => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -123,7 +128,6 @@ const Home: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white">
-      {/* Navigation */}
       <nav
         className={`fixed w-full z-50 transition-all duration-300 ${
           isScrolled
@@ -139,7 +143,6 @@ const Home: React.FC = () => {
               </span>
             </div>
 
-            {/* Desktop Menu */}
             <div className="hidden md:flex space-x-8">
               {["beranda", "produk", "tentang", "kontak"].map((section) => (
                 <button
@@ -162,7 +165,6 @@ const Home: React.FC = () => {
               ))}
             </div>
 
-            {/* Mobile Menu Button */}
             <button
               className="md:hidden text-white"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -171,7 +173,6 @@ const Home: React.FC = () => {
             </button>
           </div>
 
-          {/* Mobile Menu */}
           {isMobileMenuOpen && (
             <div className="md:hidden pb-4 space-y-3 bg-slate-800/95 backdrop-blur-lg rounded-lg mt-2 p-4">
               {["beranda", "produk", "tentang", "kontak"].map((section) => (
@@ -194,7 +195,6 @@ const Home: React.FC = () => {
         </div>
       </nav>
 
-      {/* Hero Section */}
       <section
         id="beranda"
         className="pt-32 pb-20 px-4 relative overflow-hidden"
@@ -235,7 +235,7 @@ const Home: React.FC = () => {
               <Button
                 size="lg"
                 variant="outline"
-                className="border-2 border-cyan-500/50 text-[#1b273a] hover:bg-[#00c9f7] hover:border-[#00c9f7] px-8 py-6 text-lg rounded-xl"
+                className="border-2 border-cyan-500/50 text-cyan-400 hover:bg-cyan-500/10 px-8 py-6 text-lg rounded-xl"
                 onClick={() => scrollToSection("kontak")}
               >
                 Hubungi Kami
@@ -243,7 +243,6 @@ const Home: React.FC = () => {
             </div>
           </div>
 
-          {/* Features Cards */}
           <div className="mt-20 grid md:grid-cols-3 gap-6">
             {features.map((feature, idx) => (
               <Card
@@ -265,7 +264,6 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* Produks Section */}
       <section id="produk" className="py-20 px-4 bg-slate-800/30">
         <div className="max-w-7xl mx-auto">
           <div className="text-center space-y-4 mb-16">
@@ -296,14 +294,7 @@ const Home: React.FC = () => {
                   <p className="text-gray-400">{produk.desc}</p>
                   <Button
                     variant="outline"
-                    className="
-                      w-full
-                      border-cyan-500/50
-                      text-[#1b273a]
-                      hover:bg-[#00c9f7]
-                      hover:border-[#00c9f7]
-                      transition-colors
-                    "
+                    className="w-full border-cyan-500/50 text-cyan-400 hover:bg-cyan-500/10 transition-colors"
                     onClick={() => setSelectedProduct(produk)}
                   >
                     Detail Produk
@@ -324,7 +315,6 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* Product Detail Modal */}
       {selectedProduct && (
         <div
           className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 animate-in fade-in duration-300"
@@ -334,7 +324,6 @@ const Home: React.FC = () => {
             className="bg-gradient-to-br from-slate-900 to-slate-800 rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto border border-cyan-500/30 shadow-2xl shadow-cyan-500/20"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Header */}
             <div className="sticky top-0 bg-slate-900/95 backdrop-blur-lg border-b border-slate-700/50 p-6 flex items-center justify-between">
               <div className="flex items-center space-x-4">
                 <div className="text-5xl">{selectedProduct.image}</div>
@@ -356,9 +345,7 @@ const Home: React.FC = () => {
               </button>
             </div>
 
-            {/* Content */}
             <div className="p-6 space-y-8">
-              {/* Description */}
               {selectedProduct.fullDesc && (
                 <div className="space-y-3">
                   <h4 className="text-xl font-bold text-white flex items-center space-x-2">
@@ -371,7 +358,6 @@ const Home: React.FC = () => {
                 </div>
               )}
 
-              {/* Specifications */}
               {selectedProduct.specs && (
                 <div className="space-y-3">
                   <h4 className="text-xl font-bold text-white flex items-center space-x-2">
@@ -392,7 +378,6 @@ const Home: React.FC = () => {
                 </div>
               )}
 
-              {/* Price Table */}
               {selectedProduct.prices && (
                 <div className="space-y-3">
                   <h4 className="text-xl font-bold text-white flex items-center space-x-2">
@@ -433,7 +418,6 @@ const Home: React.FC = () => {
                 </div>
               )}
 
-              {/* Applications */}
               {selectedProduct.applications && (
                 <div className="space-y-3">
                   <h4 className="text-xl font-bold text-white flex items-center space-x-2">
@@ -456,7 +440,6 @@ const Home: React.FC = () => {
                 </div>
               )}
 
-              {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-4 pt-4">
                 <Button
                   size="lg"
@@ -485,7 +468,6 @@ const Home: React.FC = () => {
         </div>
       )}
 
-      {/* Tentang Kami  Section */}
       <section id="tentang" className="py-20 px-4">
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -531,10 +513,8 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* Contact Section */}
       <section id="kontak" className="py-20 px-4 bg-slate-800/30">
         <div className="max-w-7xl mx-auto">
-          {/* HEADER */}
           <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
               <span className="bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
@@ -547,11 +527,8 @@ const Home: React.FC = () => {
             </p>
           </div>
 
-          {/* CONTENT */}
           <div className="grid md:grid-cols-2 gap-10 items-start">
-            {/* CONTACT INFO CARD */}
             <div className="bg-slate-900/60 border border-slate-700/50 rounded-xl p-6 space-y-6">
-              {/* CTA WHATSAPP */}
               <a
                 href="https://wa.me/6281234567890"
                 target="_blank"
@@ -561,7 +538,6 @@ const Home: React.FC = () => {
                 Chat WhatsApp Sekarang
               </a>
 
-              {/* PHONE */}
               <div className="flex items-start space-x-4">
                 <div className="w-10 h-10 bg-cyan-500 rounded-lg flex items-center justify-center">
                   <Phone className="text-white" size={20} />
@@ -582,7 +558,6 @@ const Home: React.FC = () => {
                 </div>
               </div>
 
-              {/* EMAIL */}
               <div className="flex items-start space-x-4">
                 <div className="w-10 h-10 bg-cyan-500 rounded-lg flex items-center justify-center">
                   <Mail className="text-white" size={20} />
@@ -601,7 +576,6 @@ const Home: React.FC = () => {
                 </div>
               </div>
 
-              {/* LOCATIONS */}
               <div className="flex items-start space-x-4">
                 <div className="w-10 h-10 bg-cyan-500 rounded-lg flex items-center justify-center">
                   <MapPin className="text-white" size={20} />
@@ -618,9 +592,7 @@ const Home: React.FC = () => {
               </div>
             </div>
 
-            {/* MAPS */}
             <div className="space-y-8">
-              {/* MAP 1 */}
               <div>
                 <h4 className="text-white font-semibold mb-2">
                   Toko Besi PD Saudara
@@ -644,7 +616,6 @@ const Home: React.FC = () => {
                 </a>
               </div>
 
-              {/* MAP 2 */}
               <div>
                 <h4 className="text-white font-semibold mb-2">
                   Bengkel Las Listrik PD Saudara
@@ -659,7 +630,7 @@ const Home: React.FC = () => {
                   />
                 </div>
                 <a
-                  href="https://maps.google.com/?q=Bengkel+Las+Listrik+PD+Saudara"
+                  href="https://maps.google.com/?q=Toko+Besi+PD+Saudara"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-block mt-2 text-sm text-cyan-400 hover:underline"
@@ -672,12 +643,9 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* Footer */}
       <footer className="py-12 px-4 border-t border-slate-700/50">
         <div className="max-w-7xl mx-auto">
-          {/* TOP */}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-10">
-            {/* BRAND */}
             <div>
               <div className="flex items-center space-x-3 mb-4">
                 <span className="text-xl font-bold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
@@ -690,7 +658,6 @@ const Home: React.FC = () => {
               </p>
             </div>
 
-            {/* CONTACT US */}
             <div>
               <h4 className="text-white font-semibold mb-4">Kontak</h4>
               <ul className="space-y-3 text-gray-400 text-sm">
@@ -723,7 +690,6 @@ const Home: React.FC = () => {
               </ul>
             </div>
 
-            {/* ABOUT US */}
             <div>
               <h4 className="text-white font-semibold mb-4">Tentang Kami</h4>
               <button
@@ -734,7 +700,6 @@ const Home: React.FC = () => {
               </button>
             </div>
 
-            {/* SERVICES */}
             <div>
               <h4 className="text-white font-semibold mb-4">Layanan</h4>
               <button
@@ -746,7 +711,6 @@ const Home: React.FC = () => {
             </div>
           </div>
 
-          {/* SOCIAL & COPYRIGHT */}
           <div className="flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0 border-t border-slate-700/50 pt-6">
             <div className="flex space-x-6">
               <a
