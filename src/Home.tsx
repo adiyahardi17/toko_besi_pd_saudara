@@ -39,6 +39,130 @@ const Home: React.FC = () => {
   useEffect(() => {
     document.title =
       "PD. SAUDARA - Distributor Besi & Baja Berkualitas | Toko Besi Cimahi Bandung";
+
+    // Set meta description
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute(
+        "content",
+        "Distributor besi dan baja terlengkap di Cimahi & Bandung. Jual besi beton SNI, hollow, siku, plat besi, H beam, wiremesh dengan harga kompetitif. Gratis konsultasi & pengiriman cepat ke lokasi proyek.",
+      );
+    } else {
+      const meta = document.createElement("meta");
+      meta.name = "description";
+      meta.content =
+        "Distributor besi dan baja terlengkap di Cimahi & Bandung. Jual besi beton SNI, hollow, siku, plat besi, H beam, wiremesh dengan harga kompetitif. Gratis konsultasi & pengiriman cepat ke lokasi proyek.";
+      document.head.appendChild(meta);
+    }
+
+    // Set meta keywords
+    const metaKeywords = document.querySelector('meta[name="keywords"]');
+    if (!metaKeywords) {
+      const meta = document.createElement("meta");
+      meta.name = "keywords";
+      meta.content =
+        "toko besi cimahi, toko besi bandung, distributor besi, jual besi beton, besi hollow, besi siku, plat besi, bengkel las, harga besi beton, besi konstruksi";
+      document.head.appendChild(meta);
+    }
+
+    // Set Open Graph tags
+    const ogTitle = document.querySelector('meta[property="og:title"]');
+    if (!ogTitle) {
+      const meta = document.createElement("meta");
+      meta.setAttribute("property", "og:title");
+      meta.content =
+        "PD. SAUDARA - Distributor Besi & Baja Berkualitas | Toko Besi Cimahi Bandung";
+      document.head.appendChild(meta);
+    }
+
+    const ogDescription = document.querySelector(
+      'meta[property="og:description"]',
+    );
+    if (!ogDescription) {
+      const meta = document.createElement("meta");
+      meta.setAttribute("property", "og:description");
+      meta.content =
+        "Distributor besi dan baja terlengkap di Cimahi & Bandung dengan harga kompetitif dan layanan terbaik.";
+      document.head.appendChild(meta);
+    }
+
+    const ogType = document.querySelector('meta[property="og:type"]');
+    if (!ogType) {
+      const meta = document.createElement("meta");
+      meta.setAttribute("property", "og:type");
+      meta.content = "website";
+      document.head.appendChild(meta);
+    }
+
+    // Set viewport if not exists
+    const viewport = document.querySelector('meta[name="viewport"]');
+    if (!viewport) {
+      const meta = document.createElement("meta");
+      meta.name = "viewport";
+      meta.content = "width=device-width, initial-scale=1.0";
+      document.head.appendChild(meta);
+    }
+
+    // Set charset if not exists
+    const charset = document.querySelector("meta[charset]");
+    if (!charset) {
+      const meta = document.createElement("meta");
+      meta.setAttribute("charset", "UTF-8");
+      document.head.insertBefore(meta, document.head.firstChild);
+    }
+
+    // Add Structured Data (Schema.org) for LocalBusiness
+    const existingSchema = document.querySelector(
+      'script[type="application/ld+json"]',
+    );
+    if (!existingSchema) {
+      const script = document.createElement("script");
+      script.type = "application/ld+json";
+      script.text = JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        name: "PD. SAUDARA",
+        description: "Distributor besi dan baja terlengkap di Cimahi & Bandung",
+        url: "https://www.pdsaudara.com",
+        telephone: "+62-812-3456-7890",
+        email: "pd.saudarairon@gmail.com",
+        address: [
+          {
+            "@type": "PostalAddress",
+            streetAddress: "Jl. Rancabali No.10A",
+            addressLocality: "Cimahi",
+            addressRegion: "Jawa Barat",
+            addressCountry: "ID",
+          },
+          {
+            "@type": "PostalAddress",
+            streetAddress: "Jl. Gn. Batu No.1A",
+            addressLocality: "Bandung",
+            addressRegion: "Jawa Barat",
+            addressCountry: "ID",
+          },
+        ],
+        geo: {
+          "@type": "GeoCoordinates",
+          latitude: "-6.8873887930829065",
+          longitude: "107.5631045106792",
+        },
+        openingHours: "Mo-Su 07:00-17:00",
+        priceRange: "$$",
+        image: "https://www.pdsaudara.com/logo.png",
+        aggregateRating: {
+          "@type": "AggregateRating",
+          ratingValue: "4.8",
+          reviewCount: "500",
+        },
+        sameAs: [
+          "https://www.facebook.com/pdsaudara",
+          "https://www.instagram.com/pdsaudara",
+          "https://wa.me/6281234567890",
+        ],
+      });
+      document.head.appendChild(script);
+    }
   }, []);
 
   const scrollToSection = (sectionId: string): void => {

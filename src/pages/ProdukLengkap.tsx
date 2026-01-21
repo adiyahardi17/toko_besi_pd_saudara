@@ -71,6 +71,59 @@ export default function ProdukLengkap() {
   useEffect(() => {
     document.title =
       "Daftar Harga Besi & Baja Lengkap 2026 - PD. SAUDARA Cimahi Bandung";
+
+    // Set meta description
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute(
+        "content",
+        "Daftar harga lengkap besi dan baja 2026: Besi beton SNI, hollow, siku, plat besi, H beam, wiremesh, CNP, UNP. Update harga terbaru dari Toko Besi PD. SAUDARA Cimahi & Bandung. Hubungi kami untuk harga terbaik.",
+      );
+    } else {
+      const meta = document.createElement("meta");
+      meta.name = "description";
+      meta.content =
+        "Daftar harga lengkap besi dan baja 2026: Besi beton SNI, hollow, siku, plat besi, H beam, wiremesh, CNP, UNP. Update harga terbaru dari Toko Besi PD. SAUDARA Cimahi & Bandung. Hubungi kami untuk harga terbaik.";
+      document.head.appendChild(meta);
+    }
+
+    // Set meta keywords
+    const metaKeywords = document.querySelector('meta[name="keywords"]');
+    if (!metaKeywords) {
+      const meta = document.createElement("meta");
+      meta.name = "keywords";
+      meta.content =
+        "harga besi beton, harga besi hollow, harga plat besi, harga besi siku, harga besi h beam, daftar harga besi 2026, toko besi cimahi, toko besi bandung";
+      document.head.appendChild(meta);
+    }
+
+    // Set Open Graph tags
+    const ogTitle = document.querySelector('meta[property="og:title"]');
+    if (!ogTitle) {
+      const meta = document.createElement("meta");
+      meta.setAttribute("property", "og:title");
+      meta.content = "Daftar Harga Besi & Baja Lengkap 2026 - PD. SAUDARA";
+      document.head.appendChild(meta);
+    }
+
+    const ogDescription = document.querySelector(
+      'meta[property="og:description"]',
+    );
+    if (!ogDescription) {
+      const meta = document.createElement("meta");
+      meta.setAttribute("property", "og:description");
+      meta.content =
+        "Update harga lengkap besi dan baja 2026 dari Toko Besi PD. SAUDARA Cimahi & Bandung.";
+      document.head.appendChild(meta);
+    }
+
+    const ogType = document.querySelector('meta[property="og:type"]');
+    if (!ogType) {
+      const meta = document.createElement("meta");
+      meta.setAttribute("property", "og:type");
+      meta.content = "website";
+      document.head.appendChild(meta);
+    }
   }, []);
 
   return (
